@@ -3,3 +3,12 @@ export function czyPoprawnyNumer(e){
         return e.preventDefault();
     return true;
 }
+
+
+export function czyPoprawnyNumerRegex(e) {
+    const regex = /^[0-9]$/;  
+  
+    if (!regex.test(e.key)) {
+      e.preventDefault(); 
+    }
+  }
