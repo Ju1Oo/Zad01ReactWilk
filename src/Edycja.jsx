@@ -12,7 +12,9 @@ const EdycjaLekcji = props => {
             </div>
             <div className="EdycjaLekcji_input-grupa">
                 <label htmlFor="czasG">Podaj czas w godzinach</label>
-                <input type="tel" name="czasG" id="czasG" value={props.czasG} onChange={(e) => props.onInputChange({[e.target.name]: e.target.value})}/>
+                <input type="tel" name="czasG" id="czasG" value={props.czasG}      
+                onKeyPress={e => czyPoprawnyNumer(e)}
+                onChange={(e) => props.onInputChange({[e.target.name]: e.target.value})}/>
             </div>
             <div className="EdycjaLekcji_input-grupa">
                 <label htmlFor="czasM">Podaj czas w minutach</label>
