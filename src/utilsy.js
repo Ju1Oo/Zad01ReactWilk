@@ -9,10 +9,13 @@ export function czyPoprawnyNumer2(e){
     return true;
 }
 
+//jedyna działające z wyswietlaniem błedu
 export function czyPoprawnyNumerRegex(e) {
-    const regex = /^[0-9]$/;  
+    const regex = /^[0-9]$/;
   
-    if (!regex.test(e.key)) {
-      e.preventDefault(); 
+    if (!regex.test(e.key) && e.key !== "Backspace") {    
+        e.preventDefault();
+        return false; 
     }
-  }
+    return true;
+}
