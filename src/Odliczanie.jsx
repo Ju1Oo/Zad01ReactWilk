@@ -7,7 +7,10 @@ import DeleteIconAnimation from "./img/KoszAnimacja.gif"
 
 const Odliczanie = props => (
     <div className="odliczanie1">
-        <span>{props.id}. <strong>{props.name}</strong> {props.czasG}:{props.czasM}</span> 
+        <span>{props.id}. <strong>{props.name}</strong>{props.czasG}:{props.czasM}</span> 
+        <div className="Odliczanie_kasowanie">
+            <b className="iks" onClick={() => props.Usun(props.id)}>x</b>
+        </div>
         <img src={deleteIcon} alt="X" className="iks" 
             onMouseOver={e => {e.target.src = deleteIconHover; 
                 e.target.style.top = "5px";}} 
