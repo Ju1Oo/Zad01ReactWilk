@@ -4,6 +4,10 @@ export function czyPoprawnyNumer(e){
     return true;
 }
 
+export function czyPoprawnyNumer2(e){
+    if(!(e.key >= 0) && e.key !=="Backspace") return e.preventDefault();
+    return true;
+}
 
 export function czyPoprawnyNumerRegex(e) {
     const regex = /^[0-9]$/;  

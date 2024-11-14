@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Edycja.css";
-import { czyPoprawnyNumerRegex } from "./utilsy";
+import { czyPoprawnyNumer2 } from "./utilsy";
 
 const EdycjaLekcji = props => {   
     return(
@@ -13,16 +13,16 @@ const EdycjaLekcji = props => {
             <div className="EdycjaLekcji_input-grupa">
                 <label htmlFor="czasG">Podaj czas w godzinach</label>
                 <input type="text" name="czasG" id="czasG" value={props.czasG}      
-                onKeyPress={e => czyPoprawnyNumerRegex(e)}
+                onKeyPress={e => czyPoprawnyNumer2(e)}
                 onChange={(e) => props.onInputChange({[e.target.name]: e.target.value})}/>
             </div>
             <div className="EdycjaLekcji_input-grupa">
                 <label htmlFor="czasM">Podaj czas w minutach</label>
-                <input type="number" name="czasM" id="czasM" value={props.czasM} 
-                
+                <input type="text" name="czasM" id="czasM" value={props.czasM} 
+                onKeyPress={e => czyPoprawnyNumer2(e)}
                 onChange={(e) => props.onInputChange({[e.target.name]: e.target.value})}/>
             </div>
-            <button /*onClick={() => alert("Funkcja w buttonie")}*/ onClick={() => props.onSave()}>Ok</button> 
+            <button onClick={() => props.onSave()}>Ok</button> 
             <button>Cancel</button>
         </div>
     );
