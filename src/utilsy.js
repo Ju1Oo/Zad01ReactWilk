@@ -32,3 +32,19 @@ export function czyNazwaIstnieje(val){
 
     return false
 }
+
+export function czyGodzinaJestPrawidlowa(val){
+    if(val<0 || val>23)
+        return false
+
+    return true
+}
+
+export function czyMinutaJestPrawidlowa(val){
+    if(val<0 || val>59)
+        return false
+
+    return true
+}
+
+
