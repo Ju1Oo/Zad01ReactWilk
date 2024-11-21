@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./Edycja.css";
-import { czyPoprawnyNumerRegex } from "./utilsy";
+import { czyPoprawnyNumerRegex, zmienZnakiNaLiczbe } from "./utilsy";
 
 const EdycjaLekcji = props => {
     const [error, setError] = useState("");
@@ -27,14 +27,14 @@ const EdycjaLekcji = props => {
                 <input type="text" name="czasG" id="czasG" 
                 value={props.czasG === -1 ? "" : props.czasG}      
                 onKeyPress={handleKeyPress} 
-                onChange={(e) => props.onInputChange({[e.target.name]: e.target.value})}/>
+                onChange={(e) => props.onInputChange({[e.target.name]: zmienZnakiNaLiczbe(e.target.value)})}/>
             </div>
             <div className="EdycjaLekcji_input-grupa">
                 <label htmlFor="czasM">Podaj czas w minutach</label>
                 <input type="text" name="czasM" id="czasM" 
                 value={props.czasM  === -1 ? "" :props.czasM} 
                 onKeyPress={handleKeyPress} 
-                onChange={(e) => props.onInputChange({[e.target.name]: e.target.value})}/>
+                onChange={(e) => props.onInputChange({[e.target.name]: zmienZnakiNaLiczbe(e.target.value)})}/>
             </div>
             {error && <div className="error-message">{error}</div>} {}
             <button onClick={() => props.onSave()}>Ok</button> 
@@ -45,10 +45,10 @@ const EdycjaLekcji = props => {
 
 EdycjaLekcji.propTypes = {
     name: PropTypes.string,
-    czasG: PropTypes.string,
-    czasM: PropTypes.string,
-    onInputChange: PropTypes.func.isRequired,
+    czasG: PropTypes.number,
+    czasM: PropTypes.number,
     onSave: PropTypes.func.isRequired,
+    czyPoprawnyNumerRegex: PropTypes.func
 };
 
 export default EdycjaLekcji;

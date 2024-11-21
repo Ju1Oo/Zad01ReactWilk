@@ -19,3 +19,16 @@ export function czyPoprawnyNumerRegex(e) {
     }
     return true;
 }
+
+export function zmienZnakiNaLiczbe(val){
+    if(val === "")
+        return -1;
+    return parseInt(val,10); 
+}
+
+export function czyNazwaIstnieje(val){
+    if(val.length > 0)
+        return true
+
+    return false
+}
