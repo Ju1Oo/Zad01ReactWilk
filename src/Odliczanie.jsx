@@ -28,8 +28,8 @@ const Odliczanie = props => (
 
 Odliczanie.propTypes={
     name: PropTypes.string,
-    czasM: PropTypes.string,
-    czasG: PropTypes.string
+    czasM: PropTypes.number,
+    czasG: PropTypes.number
 };
 
 export default Odliczanie;

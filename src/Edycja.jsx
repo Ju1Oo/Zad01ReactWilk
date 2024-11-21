@@ -24,13 +24,15 @@ const EdycjaLekcji = props => {
             </div>
             <div className="EdycjaLekcji_input-grupa">
                 <label htmlFor="czasG">Podaj czas w godzinach</label>
-                <input type="text" name="czasG" id="czasG" value={props.czasG}      
+                <input type="text" name="czasG" id="czasG" 
+                value={props.czasG === -1 ? "" : props.czasG}      
                 onKeyPress={handleKeyPress} 
                 onChange={(e) => props.onInputChange({[e.target.name]: e.target.value})}/>
             </div>
             <div className="EdycjaLekcji_input-grupa">
                 <label htmlFor="czasM">Podaj czas w minutach</label>
-                <input type="text" name="czasM" id="czasM" value={props.czasM} 
+                <input type="text" name="czasM" id="czasM" 
+                value={props.czasM  === -1 ? "" :props.czasM} 
                 onKeyPress={handleKeyPress} 
                 onChange={(e) => props.onInputChange({[e.target.name]: e.target.value})}/>
             </div>

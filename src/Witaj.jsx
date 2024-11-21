@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Odliczanie from "./Odliczanie";
 import EdycjaLekcji from "./Edycja";
+import uniqid from "uniqid"
 import "./Witaj.css";
 
 class Powitanie extends Component{
@@ -16,10 +17,10 @@ class Powitanie extends Component{
                 {id:5, name:"Lekcja 6", czasG:"12", czasM:"15"}
             ],
             edytowaneLekcje: {
-                id: 6,
+                id: uniqid(),
                 name: "",
-                czasG: "",
-                czasM: ""
+                czasG: -1,
+                czasM: -1
             }
         }
         this.dodanieLekcji = this.dodanieLekcji.bind(this);
@@ -46,20 +47,38 @@ class Powitanie extends Component{
 
     edycjaLekcjiE(id){
         this.setState(prevState => ({
-            edytowaneLekcje: prevState.Lekcje.find(element => element.id ===id)
+            edytowaneLekcje: {...prevState.Lekcje.find(element => element.id ===id)}
         }))
     }
 
     zapisanieLekcji(){
-        this.setState(prevState => ({
-            Lekcje: [...prevState.Lekcje, prevState.edytowaneLekcje],
-            edytowaneLekcje:{
-                id: prevState.edytowaneLekcje.id + 1,
-                name: "",
-                czasG: "",
-                czasM: ""
+        this.setState(prevState => {
+            const czyLekcjaJuzIstnieje = prevState.Lekcje.find(
+                element => element.id === prevState.edytowaneLekcje.id
+            );
+            let aktualizowanieLekcji;
+            if(czyLekcjaJuzIstnieje){
+                aktualizowanieLekcji = prevState.Lekcje.map(element =>
+                {
+                    if(element.id === prevState.edytowaneLekcje.id)
+                        return prevState.edytowaneLekcje;
+                    
+                    return element
+                })                
             }
-        }));
+            else{
+                aktualizowanieLekcji = [...prevState.Lekcje, prevState.edytowaneLekcje];
+            }
+            return{
+            Lekcje:aktualizowanieLekcji,
+            edytowaneLekcje:{
+                id: uniqid(),
+                name: "",
+                czasG: -1,
+                czasM: -1
+                }
+            }
+        });
     }
 
     render(){
