@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./Edycja.css";
-import { czyPoprawnyNumerRegex, zmienZnakiNaLiczbe } from "./utilsy";
+import { czyNazwaIstnieje, czyPoprawnyNumerRegex, zmienZnakiNaLiczbe } from "./utilsy";
 
 const EdycjaLekcji = props => {
     const [error, setError] = useState("");
@@ -37,7 +37,7 @@ const EdycjaLekcji = props => {
                 onChange={(e) => props.onInputChange({[e.target.name]: zmienZnakiNaLiczbe(e.target.value)})}/>
             </div>
             {error && <div className="error-message">{error}</div>} {}
-            <button onClick={() => props.onSave()}>Ok</button> 
+            <button disabled = {!(czyNazwaIstnieje(props.name ))} onClick={() => props.onSave()} >Ok</button> 
             <button>Cancel</button>
         </div>
     );
@@ -48,7 +48,8 @@ EdycjaLekcji.propTypes = {
     czasG: PropTypes.number,
     czasM: PropTypes.number,
     onSave: PropTypes.func.isRequired,
-    czyPoprawnyNumerRegex: PropTypes.func
+    czyPoprawnyNumerRegex: PropTypes.func,
+    czyszczenieEdycji: PropTypes.func
 };
 
 export default EdycjaLekcji;

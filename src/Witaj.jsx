@@ -29,6 +29,15 @@ class Powitanie extends Component{
         this.edycjaLekcjiE = this.edycjaLekcjiE.bind(this); 
     }
 
+    czyscEdycje(){
+        this.setState({edytowaneLekcje : { 
+            id: uniqid(),
+            name: "",
+            czasG: -1,
+            czasM: -1
+        }})
+    }
+
     usuwanieLekcji(id){
         this.setState(prevState => ({
          Lekcje: prevState.Lekcje.filter(element => element.id !== id)   
@@ -96,7 +105,9 @@ class Powitanie extends Component{
                     name = {this.state.edytowaneLekcje.name}
                     czasG = {this.state.edytowaneLekcje.czasG}
                     czasM = {this.state.edytowaneLekcje.czasM}
-                    onInputChange = {val => this.dodanieLekcji(val)}  onSave = {val => this.zapisanieLekcji(val)}/>
+                    onInputChange = {val => this.dodanieLekcji(val)}  
+                    onSave = {val => this.zapisanieLekcji(val)}
+                    czyszczenieEdycji = {() => this.czyscEdycje}/>
             
         </>
         )
