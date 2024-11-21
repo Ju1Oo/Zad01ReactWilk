@@ -10,6 +10,9 @@ const Odliczanie = props => (
         <span>{props.id}. <strong>{props.name}</strong>{props.czasG}:{props.czasM}</span> 
         <div className="Odliczanie_kasowanie">
         </div>
+       <div className="operacje">
+        <i className="edycja" onClick={() => props.edytujLekcje(props.id)}>[E]</i>
+        
         <img src={deleteIcon} alt="X" className="iks" 
             onMouseOver={e => {e.target.src = deleteIconHover; 
                 e.target.style.top = "5px";}} 
@@ -19,6 +22,7 @@ const Odliczanie = props => (
             setTimeout(() => props.Usun(props.id), 1000)
             }}
            />
+        </div> 
     </div>
 );
 

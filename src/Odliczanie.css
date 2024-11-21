@@ -67,3 +67,13 @@
 .iks:active {
     transform: scale(0.9); 
 }
+
+.operacje{
+    float: right;
+    
+    font-size: 1.7em;
+}
+
+.operacje:hover .operacje{
+    display: block;
+}

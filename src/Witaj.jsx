@@ -25,6 +25,7 @@ class Powitanie extends Component{
         this.dodanieLekcji = this.dodanieLekcji.bind(this);
         this.zapisanieLekcji = this.zapisanieLekcji.bind(this);
         this.usuwanieLekcji = this.usuwanieLekcji.bind(this);
+        this.edycjaLekcjiE = this.edycjaLekcjiE.bind(this); 
     }
 
     usuwanieLekcji(id){
@@ -43,6 +44,12 @@ class Powitanie extends Component{
         })
     };
 
+    edycjaLekcjiE(id){
+        this.setState(prevState => ({
+            edytowaneLekcje: prevState.Lekcje.find(element => element.id ===id)
+        }))
+    }
+
     zapisanieLekcji(){
         this.setState(prevState => ({
             Lekcje: [...prevState.Lekcje, prevState.edytowaneLekcje],
@@ -57,7 +64,9 @@ class Powitanie extends Component{
 
     render(){
         const Lekcje = this.state.Lekcje.map(element => {
-            return <Odliczanie key={element.id} id={element.id} name={element.name} czasG={element.czasG} czasM={element.czasM} Usun={id => this.usuwanieLekcji(id)}/>
+            return <Odliczanie key={element.id} id={element.id} name={element.name} czasG={element.czasG} czasM={element.czasM} 
+            Usun={id => this.usuwanieLekcji(id)}
+            edytujLekcje = {id => this.edycjaLekcjiE(id)}/>
         })
         return(
         <>
